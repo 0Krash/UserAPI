@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using UserAPI.Database;
+
 namespace UserAPI;
 
 public class Startup
@@ -12,6 +15,10 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
+        services.AddDbContext<UserDbContext>(options =>
+        {
+            options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
+        });
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
     }
