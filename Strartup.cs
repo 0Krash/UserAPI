@@ -38,5 +38,7 @@ public class Startup
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+        PrepareDB.PreparePopulation(app);
     }
 }
